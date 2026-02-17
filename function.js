@@ -5,6 +5,7 @@ const todoList = document.querySelector('#listTodo');
 // click button
 addTodoButton.addEventListener('click', addTodo);
 
+// store data in array
 const todos = JSON.parse(localStorage.getItem('todos')) || [];
 
 function addTodo() {
@@ -20,6 +21,7 @@ function addTodo() {
 
   todoInput.value = '';
 
+  saveTodos();
   renderTodos(); // need tawagin para mailabas yung data sa localStorage
 }
 
@@ -29,7 +31,7 @@ function saveTodos() {
 }
 
 function editTodo(index) {
-  const newTask = prompt('Edit task:', todos[index]);
+  const newTask = prompt('Edit task:', todos[index]); // create modal here to edit
   if (newTask !== null && newTask.trim());
   todos[index] = newTask.trim();
   saveTodos();

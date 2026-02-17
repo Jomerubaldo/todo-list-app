@@ -73,13 +73,13 @@
           <span class="material-symbols-outlined text-3xl">check_circle</span>
         </div>
         <h1 class="text-2xl font-bold leading-tight tracking-tight flex-1">
-          Todo List
+          TodoList
         </h1>
-        <button
+        <!-- <button
           class="p-2 text-[#616f89] hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full"
         >
           <span class="material-symbols-outlined">more_vert</span>
-        </button>
+        </button> -->
       </header>
       <!-- Input Section (Create) -->
       <section class="px-6 py-6 bg-white dark:bg-[#1a212e]">
@@ -94,7 +94,7 @@
                 <input
                   id="inputTodo"
                   class="form-input w-full rounded-lg border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-primary focus:ring-2 focus:ring-primary/20 h-12 px-4 text-base placeholder:text-[#616f89]"
-                  placeholder="What needs to be done?"
+                  placeholder="Input task here..."
                   type="text"
                 />
               </div>
@@ -113,7 +113,7 @@
       <main class="flex-1 px-6 pb-24">
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-sm font-bold uppercase tracking-wider text-[#616f89]">
-            Ongoing Tasks
+            <del>Ongoing Tasks</del>
           </h3>
           <span
             class="bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded-full"
@@ -121,10 +121,7 @@
           >
         </div>
         <!-- list items -->
-        <div>
-          <div id="listTodo"></div>
-        </div>
-
+        <div id="listTodo" class="space-y-3"></div>
         <!-- Empty State Illustration Placeholder (if no tasks) -->
         <!-- 
             <div class="mt-12 flex flex-col items-center text-center px-10">
@@ -151,7 +148,7 @@
           </div>
           <p class="text-xs font-bold leading-normal tracking-wide">Tasks</p>
         </a>
-        <a
+        <!-- <a
           class="flex flex-1 flex-col items-center justify-center gap-1 rounded-lg text-[#616f89] hover:text-primary transition-colors"
           href="#"
         >
@@ -172,32 +169,9 @@
           <p class="text-xs font-medium leading-normal tracking-wide">
             Settings
           </p>
-        </a>
+        </a> -->
       </nav>
     </div>
     <script src="function.js"></script>
   </body>
 </html>
-
-<!-- <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="container">
-      <div>
-        <div id="containerList">
-          <ul id="listTodo">
-          </ul>
-        </div>
-        <input id="inputTodo" type="text" placeholder="Add your task here..." />
-        <button id="buttonTodoAdd">Add Task</button>
-      </div>
-    </div>
-    <script src="function.js"></script>
-  </body>
-</html> -->

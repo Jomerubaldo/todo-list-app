@@ -8,4 +8,10 @@
 
 # ECOUNTER ERROR OR BUG NEED TO FIX TOMORROW:
 
-## 1. kapag nag add ako ng list hindi agad siya napupunta sa local storage pero kapag naka add nako tapos nag edit is don palang siya nanasasave sa local storage
+## solve na 1. kapag nag add ako ng list hindi agad siya napupunta sa local storage pero kapag naka add nako tapos nag edit is don palang siya nanasasave sa local storage
+
+## 2. need implement yung cliclick yung task tapos may style na may guhit para malaman na tapos nayon task nayon
+
+## 3. need gawan ng modal yung edit para mas maganda tignan kapag nag eedit ng newTask
+
+## 4. need din dapat malaman kung ilan na yung task an nalagay ko real time makikita siya
