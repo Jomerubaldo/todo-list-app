@@ -4,6 +4,13 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>To-Do List</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <style>
       *,
@@ -246,8 +253,8 @@
       /* Circle */
       .todo-circle {
         display: flex;
-        height: 1.5rem;
-        width: 1.5rem;
+        height: 1.3rem;
+        width: 1.3rem;
         align-items: center;
         justify-content: center;
         border-radius: 9999px;
@@ -258,7 +265,7 @@
       }
 
       .todo-circle:hover {
-        border-color: var(--primary);
+        border-color: #32cd32;
       }
 
       /* Text */
@@ -297,10 +304,7 @@
           color 0.15s,
           background-color 0.15s;
         color: #616f89;
-      }
-
-      .todo-btn .material-symbols-outlined {
-        font-size: 20px;
+        font-size: 18px;
       }
 
       .todo-btn-edit:hover {
@@ -405,14 +409,17 @@
           // Circle
           const circle = document.createElement('div');
           circle.className = 'todo-circle';
-          // Text
+          // img
+          const checkImg = document.createElement('img');
 
+          // Text
           circle.onclick = function () {
             todos[index].completed = !todos[index].completed;
             saveTodos();
             renderTodos();
           };
 
+          // Text
           const text = document.createElement('p');
           text.className = 'todo-text';
           text.textContent = todo.text;
@@ -421,6 +428,11 @@
           if (todo.completed) {
             text.style.textDecoration = 'line-through';
             text.style.opacity = '0.6';
+            checkImg.src =
+              'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/20px-Flat_tick_icon.svg.png';
+            checkImg.style.width = '20px';
+            checkImg.style.height = '20px';
+            circle.appendChild(checkImg);
           }
 
           // Right section (buttons)
@@ -429,12 +441,14 @@
           // Edit button
           const editBtn = document.createElement('button');
           editBtn.className = 'todo-btn todo-btn-edit';
-          editBtn.innerHTML = '<span>Edit</span>';
+          editBtn.innerHTML =
+            '<span><i class="fa-solid fa-pen-to-square"></i></span>';
           editBtn.onclick = () => editTodo(index);
           // Delete button
           const deleteBtn = document.createElement('button');
           deleteBtn.className = 'todo-btn todo-btn-delete';
-          deleteBtn.innerHTML = '<span>Delete</span>';
+          deleteBtn.innerHTML =
+            '<span><i class="fa-solid fa-trash"></i></span>';
           deleteBtn.onclick = function () {
             todos.splice(index, 1);
             localStorage.setItem('todos', JSON.stringify(todos));

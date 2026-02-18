@@ -8,6 +8,8 @@
 
 ## 4. gumawa ng done task ang nangyari is gumamit ng object instead of array para makita kung yung task is done naba or hindi tsaka gagawan ng function logic para e check kung yung task is done or not
 
+## 5. gumawa ako ng check mark kapag done nayung task ganto ko siya ginawa gumawa mona ako ng createElement na para sa img tapos ininsert ko siya sa nagchecheck kung tapos nayon task tapos nag appendChild lang ako tapos tinawag koyong checkImg kona ginawa.
+
 # ECOUNTER ERROR OR BUG NEED TO FIX TOMORROW:
 
 ## solve na 1. kapag nag add ako ng list hindi agad siya napupunta sa local storage pero kapag naka add nako tapos nag edit is don palang siya nanasasave sa local storage
