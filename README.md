@@ -6,11 +6,13 @@
 
 ## 3. kapag mag eedit ka naman gagamitan mo siya ng index
 
+## 4. gumawa ng done task ang nangyari is gumamit ng object instead of array para makita kung yung task is done naba or hindi tsaka gagawan ng function logic para e check kung yung task is done or not
+
 # ECOUNTER ERROR OR BUG NEED TO FIX TOMORROW:
 
 ## solve na 1. kapag nag add ako ng list hindi agad siya napupunta sa local storage pero kapag naka add nako tapos nag edit is don palang siya nanasasave sa local storage
 
-## 2. need implement yung cliclick yung task tapos may style na may guhit para malaman na tapos nayon task nayon
+## solve na 2. need implement yung cliclick yung task tapos may style na may guhit para malaman na tapos nayon task nayon
 
 ## 3. need gawan ng modal yung edit para mas maganda tignan kapag nag eedit ng newTask
 
