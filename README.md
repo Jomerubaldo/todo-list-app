@@ -18,6 +18,8 @@
 
 ## solve na 2. need implement yung cliclick yung task tapos may style na may guhit para malaman na tapos nayon task nayon
 
-## 3. need gawan ng modal yung edit para mas maganda tignan kapag nag eedit ng newTask
+## solve na 3. need gawan ng modal yung edit para mas maganda tignan kapag nag eedit ng newTask
 
 ## solve na 4. need din dapat malaman kung ilan na yung task an nalagay ko real time makikita siya
+
+## 5. need improve yung modal for edit para maganda tignan plain lang kasi siya.

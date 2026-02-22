@@ -2,8 +2,10 @@ const todoInput = document.querySelector('#inputTodo');
 const addTodoButton = document.querySelector('#buttonTodoAdd');
 const todoList = document.querySelector('#listTodo');
 const form = document.querySelector('#todoForm');
-// click button
-addTodoButton.addEventListener('click', addTodo);
+const editModal = document.querySelector('#editModal');
+const editInput = document.querySelector('#modal-input');
+const saveEdit = document.querySelector('#saveEdit');
+const cancelEdit = document.querySelector('#cancelEdit');
 // store data in array
 const todos = JSON.parse(localStorage.getItem('todos')) || [];
 function addTodo() {
@@ -31,6 +33,7 @@ function addTodo() {
 
 form.addEventListener('submit', function (event) {
   event.preventDefault();
+  addTodo();
 });
 
 // save to local sotrage
@@ -38,9 +41,31 @@ function saveTodos() {
   localStorage.setItem('todos', JSON.stringify(todos));
 }
 
+let currentIndex = null;
+
 function editTodo(index) {
-  alert('tangina talaga');
+  currentIndex = index; // store index
+  editInput.value = todos[index].text; // show value current value before edit
+  editModal.style.display = 'block'; // show modal
 }
+
+// need outside the editTodo function but its connected
+// save edit modal
+saveEdit.addEventListener('click', function () {
+  const newTask = editInput.value.trim();
+
+  if (newTask) {
+    todos[currentIndex].text = newTask;
+    saveTodos();
+    renderTodos();
+  }
+  editModal.style.display = 'none'; // automatic close modal after click done
+});
+
+// cancel edit modal
+cancelEdit.addEventListener('click', function () {
+  editModal.style.display = 'none';
+});
 
 function renderTodos() {
   todoList.innerHTML = '';
@@ -93,7 +118,7 @@ function renderTodos() {
     editBtn.className = 'todo-btn todo-btn-edit';
     editBtn.innerHTML =
       '<span><i class="fa-solid fa-pen-to-square"></i></span>';
-    editBtn.onclick = () => editTodo(index);
+    editBtn.onclick = () => editTodo(index); // for ui modal
     // Delete button
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'todo-btn todo-btn-delete';

@@ -325,3 +325,32 @@ nav a p {
   background-color: #616f89;
   border-radius: 50px;
 }
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+#modal-content {
+  text-align: center;
+  padding-top: 100px;
+}
+
+#edit-title {
+  font-family: sans-serif;
+  padding-right: 55px;
+}
+
+#modal-input {
+  padding-bottom: 3px;
+  border-radius: 5px;
+}
+
+#modal-button {
+  padding-top: 15px;
+  padding-right: 67px;
+}
