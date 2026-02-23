@@ -45,8 +45,8 @@ let currentIndex = null;
 
 function editTodo(index) {
   currentIndex = index; // store index
-  editInput.value = todos[index].text; // show value current value before edit
-  editModal.style.display = 'block'; // show modal
+  editInput.value = todos[index].text; // show current value when click edit
+  editModal.style.display = 'flex'; // show modal
 }
 
 // need outside the editTodo function but its connected
