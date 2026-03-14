@@ -1,79 +1,147 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="icon" type="image/x-icon" href="#" />
-    <title>To-Do List</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body>
-    <div class="app-wrapper">
-      <!-- Header -->
-      <header>
-        <h1>TodoList</h1>
-      </header>
 
-      <!-- Input Section (Create) -->
-      <section class="input-section">
-        <div class="input-group">
-          <label class="input-label">
-            <span class="input-label-text">New Task</span>
-            <form class="input-row" id="todoForm">
-              <div class="input-wrapper">
-                <input
-                  id="inputTodo"
-                  placeholder="Add a new task..."
-                  type="text"
-                />
-              </div>
-              <button type="submit" id="buttonTodoAdd">
-                <span>+ Create</span>
-              </button>
-            </form>
-          </label>
-        </div>
-      </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="#">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>TodoList</title>
+</head>
 
-      <!-- Task List (Read, Update, Delete) -->
-      <main>
-        <div class="task-list-header">
-          <h3 class="task-list-title">Ongoing Tasks</h3>
-          <p id="tasks-count"><span id="countTask">0</span>Tasks</p>
-        </div>
-        <!-- list items -->
-        <div id="listTodo"></div>
-      </main>
-    </div>
+<body>
 
-    <!-- create modal from scratch for edit -->
+  <div class="app-shell">
 
-    <div id="editModal" class="modal">
-      <div id="modal-content">
-        <div id="edit-title">
-          <h2>Edit task:</h2>
-        </div>
-        <div id="input-container">
-          <div id="task-name">Task Name</div>
-          <div>
-            <input name="task" id="modal-input" type="text" />
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+
+        <!-- Brand Header -->
+        <header class="sidebar-header">
+          <div class="brand">
+            <h1 class="brand-title">TodoList</h1>
+          </div>
+        </header>
+
+        <!-- Stats -->
+        <div class="sidebar-stats">
+          <div class="stat-card">
+            <span class="stat-number" id="totalCount">0</span>
+            <span class="stat-label">Total</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="activeCount">0</span>
+            <span class="stat-label">Active</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="doneCount">0</span>
+            <span class="stat-label">Done</span>
           </div>
         </div>
-        <div id="modal-button">
-          <button id="saveEdit">Save Changes</button>
-          <button id="cancelEdit">Cancel</button>
-        </div>
+
+        <!-- Filter Nav -->
+        <div class="filter-label">Filter</div>
+        <nav class="filter-nav">
+          <button class="filter-btn active" data-filter="all">
+            <i class="fa-solid fa-list"></i>
+            All Tasks
+            <span class="filter-badge" id="badgeAll">0</span>
+          </button>
+          <button class="filter-btn" data-filter="active">
+            <i class="fa-regular fa-circle"></i>
+            Active
+            <span class="filter-badge" id="badgeActive">0</span>
+          </button>
+          <button class="filter-btn" data-filter="completed">
+            <i class="fa-solid fa-check"></i>
+            Completed
+            <span class="filter-badge" id="badgeDone">0</span>
+          </button>
+        </nav>
+
+        <!-- Divider -->
+        <div class="sidebar-divider"></div>
+
+        <!-- Clear completed -->
+        <button class="clear-btn" id="clearCompleted">
+          <i class="fa-solid fa-trash-can"></i>
+          Clear Completed
+        </button>
+
+      </div>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <main class="main-panel" id="mainPanel">
+
+      <!-- Sticky top bar (mobile back + heading) -->
+      <div class="panel-topbar">
+        <button class="icon-btn mobile-back" id="mobileBack" aria-label="Back">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <h2 class="panel-title" id="panelTitle">All Tasks</h2>
+      </div>
+
+      <!-- Add task form -->
+      <div class="add-task-bar">
+        <form class="add-task-form" id="todoForm">
+          <input id="inputTodo" class="task-input" type="text" placeholder="Add a new task…" autocomplete="off" />
+          <button type="submit" class="btn-primary" id="buttonTodoAdd">
+            <i class="fa-solid fa-plus"></i>
+            <span>Create</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Task count badge -->
+      <div class="task-list-meta">
+        <span class="task-list-label">Tasks</span>
+        <span class="task-count-badge" id="countTask">0</span>
+      </div>
+
+      <!-- Task list -->
+      <div class="task-list" id="listTodo"></div>
+
+    </main>
+
+  </div><!-- /app-shell -->
+
+  <!-- FAB (mobile only) -->
+  <button class="fab" id="fabBtn" aria-label="Add task">
+    <i class="fa-solid fa-plus"></i>
+  </button>
+
+  <!-- EDIT MODAL -->
+  <div class="modal-overlay" id="editModal" role="dialog" aria-modal="true" aria-labelledby="editModalHeading">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 class="modal-heading" id="editModalHeading">Edit Task</h2>
+        <button class="icon-btn light" id="closeEditModal" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="modal-input">Task Name</label>
+        <input id="modal-input" class="form-input" type="text" placeholder="Update your task…" autocomplete="off">
+      </div>
+      <div class="modal-footer">
+        <button id="cancelEdit" class="btn-ghost">Cancel</button>
+        <button id="saveEdit" class="btn-primary">Save Changes</button>
       </div>
     </div>
+  </div>
 
-    <script src="function.js"></script>
-  </body>
+  <script src="function.js"></script>
+</body>
+
 </html>
